@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Matrix Result">
+        <div class="slds-m-around_medium">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col"></th>
+                        <template for:each={stageTotalsData} for:item="stage">
+                            <th key={stage.stage} class="" scope="col">{stage.stage}</th>
+                        </template>
+                        <th class="" scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={workgroupTotalsData} for:item="workgroup">
+                        <tr key={workgroup.workgroup} class="slds-hint-parent">
+                            <th scope="row">{workgroup.workgroup}</th>
+                            <template for:each={stageTotalsData} for:item="stage">
+                                <td key={stage.stage}>
+                                    <!-- You need to provide a way to get the count for each workgroup and stage -->
+                                </td>
+                            </template>
+                            <td>
+                                ${workgroup.total}
+                            </td>
+                        </tr>
+                    </template>
+                    <tr class="slds-hint-parent">
+                        <th scope="row">Total</th>
+                        <template for:each={stageTotalsData} for:item="stage">
+                            <td key={stage.stage}>
+                                ${stage.total}
+                            </td>
+                        </template>
+                        <td>
+                            ${total}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>
